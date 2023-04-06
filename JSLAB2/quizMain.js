@@ -134,9 +134,7 @@ function QuizPage(pageIndex, quesAnsPair, qaPairArray) {
       index++
     ) {
       const answerObj = quesAnsPair.multipleOptionsObj[index];
-
       const choiceID = "choice" + index;
-
       const answerChoiceElement = document.getElementById(choiceID);
       answerChoiceElement.innerHTML = answerObj.answerText;
     }
@@ -167,7 +165,6 @@ function QuizApplication(quesAnsPairArr) {
     for (let index = 0; index < buttonsCount; index++) {
       const buttonId = `btn${index}`;
       const buttonElement = document.getElementById(buttonId);
-
       this.associateEventListener(buttonElement, currentQuizAppObject);
     }
   };
@@ -181,14 +178,12 @@ function QuizApplication(quesAnsPairArr) {
   this.handleUserAnswerSelection = function (event) {
     const target = event.currentTarget;
     const userAnswerText = target.children[0].innerText;
-
     const qaPair = quesAnsPairArr[this.pageIndex];
 
     const outcome = qaPair.checkAnswer(userAnswerText);
     if (outcome) {
       this.incrementScore();
     }
-
     this.nextPage();
   };
 
@@ -225,7 +220,6 @@ function QuizApplication(quesAnsPairArr) {
 
   this.displayQuizPage = function () {
     const quesansPair = this.quesAnsPairArray[this.pageIndex];
-
     const quizPage = new QuizPage(
       this.pageIndex,
       quesansPair,
